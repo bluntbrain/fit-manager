@@ -1,6 +1,7 @@
 ## **Code Guidelines**
 
 ### **General Principles**
+
 1. **Naming Convention**: Use `PascalCase` for component names and `snake_case` for functions and variables.
 2. **Functional Components**: Always use functional components.
 3. **Limit Component Length**: Aim to keep components under 350 lines. If it exceeds, consider refactoring.
@@ -13,10 +14,12 @@
 10. **Branch Naming**: Follow a structured format: `feat-{feature-name}`, `fix-{fix-name}`, and `chore-{chore-name}`.
 
 ### **State Management**
+
 1. **State Declarations**: Declare states at the top of your component.
 2. **Context API**: Utilize the Context API for state management.
 
 ### **Component Structure**
+
 1. **Component Depth**: Maintain a flat component structure. Nested child components should not exceed 2 levels deep.
 2. **Design Components**: Common design components should reside in "components/common" folder.
 3. **Avoid JSX Variables**: Refrain from using JSX variables unless absolutely necessary.
@@ -30,6 +33,7 @@
    - Data Transformers
 
 ### **Libraries & Utilities**
+
 1. **Safe Area**: Use `SafeAreaView` from `react-native-safe-area-context`.
 2. **Text Components**: Import Text and other design components from `@the-source`.
 3. **Touchables**: Use components from `react-native-gesture-handler` for touchables.
@@ -37,8 +41,5 @@
 5. **Images**: Use `FastImage` instead of the standard `Image` tag.
 
 ### **Merging & Pull Requests**
+
 1. **Merge Strategy**: Adopt a "Squash and Merge" approach for feature/fix branches.
-
----
-
-This updated list should be more in line with your project's specific requirements.
