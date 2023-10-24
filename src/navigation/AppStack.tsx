@@ -10,7 +10,6 @@ import MemberList from '../screens/MemberManagement/MemberList';
 import Dashboard from '../screens/Dashboard/Dashboard';
 import ViewProfile from '../screens/UserSettingsAndProfile/ViewProfile';
 import {RouteNames} from './RouteName';
-import {Text} from 'react-native-paper';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
