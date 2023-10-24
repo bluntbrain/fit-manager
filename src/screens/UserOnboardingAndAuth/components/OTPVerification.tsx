@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     width: '80%',
     height: 100,
     alignSelf: 'center',
-    // backgroundColor:'red'
   },
   app_logo_styles: {
     width: 150,
@@ -33,7 +32,6 @@ const styles = StyleSheet.create({
   sub_title: {
     alignSelf: 'center',
     textAlign: 'center',
-    // marginBottom: 20,
     color: colors.black,
     fontWeight: '500',
     fontSize: 12,
@@ -70,9 +68,7 @@ const OTPVerification = () => {
         style={styles.otpView}
         pinCount={6}
         autoFocusOnLoad
-        onCodeFilled={code => {
-          set_code(code);
-        }}
+        onCodeFilled={code => set_code(code)}
         codeInputFieldStyle={styles.otp_input_field_style}
       />
       <Button title="Submit" onPress={confirm_code} />

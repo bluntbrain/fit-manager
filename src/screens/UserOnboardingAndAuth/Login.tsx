@@ -8,8 +8,6 @@ import {AuthContext} from './context';
 const LoginComponent = () => {
   const {confirm} = useContext(AuthContext);
 
-  console.log('confirm', confirm);
-
   if (!confirm) {
     return <PhoneNumberInput />;
   }
