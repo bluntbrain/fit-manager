@@ -1,79 +1,44 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+## **Code Guidelines**
 
-# Getting Started
+### **General Principles**
+1. **Naming Convention**: Use `PascalCase` for component names and `snake_case` for functions and variables.
+2. **Functional Components**: Always use functional components.
+3. **Limit Component Length**: Aim to keep components under 350 lines. If it exceeds, consider refactoring.
+4. **Library Imports**: Place all library imports at the top, followed by a space, then your custom module imports.
+5. **Props Ordering**: Define required props at the top, followed by optional props. Separate them with a space.
+6. **No Inline Styles**: Avoid inline styles. If only one style is needed, consider refining the design to remove it.
+7. **No Inline Functions**: Functions should be defined outside the component render method.
+8. **Array Functions**: Always use Lodash library functions over native array functions.
+9. **File & Folder Naming**: Follow a consistent naming convention and structure them based on features.
+10. **Branch Naming**: Follow a structured format: `feat-{feature-name}`, `fix-{fix-name}`, and `chore-{chore-name}`.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+### **State Management**
+1. **State Declarations**: Declare states at the top of your component.
+2. **Context API**: Utilize the Context API for state management.
 
-## Step 1: Start the Metro Server
+### **Component Structure**
+1. **Component Depth**: Maintain a flat component structure. Nested child components should not exceed 2 levels deep.
+2. **Design Components**: Common design components should reside in "components/common" folder.
+3. **Avoid JSX Variables**: Refrain from using JSX variables unless absolutely necessary.
+4. **Logic & Styles**: If a component doesn't exceed 350 lines, keep its logic and styles within the same file.
+5. **Component Folder Structure**:
+   - `Feature Name` Folder
+   - `Feature Name` File (Main logic)
+   - Components Folder (For child components)
+   - Styles
+   - Helpers
+   - Data Transformers
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+### **Libraries & Utilities**
+1. **Safe Area**: Use `SafeAreaView` from `react-native-safe-area-context`.
+2. **Text Components**: Import Text and other design components from `@the-source`.
+3. **Touchables**: Use components from `react-native-gesture-handler` for touchables.
+4. **Modal**: Prefer using the `Modal` component from `nativebase`.
+5. **Images**: Use `FastImage` instead of the standard `Image` tag.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+### **Merging & Pull Requests**
+1. **Merge Strategy**: Adopt a "Squash and Merge" approach for feature/fix branches.
 
-```bash
-# using npm
-npm start
+---
 
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+This updated list should be more in line with your project's specific requirements.
