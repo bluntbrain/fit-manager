@@ -1,8 +1,7 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import EnterPhoneNumber from '../screens/UserOnboardingAndAuth/EnterPhoneNumber';
-import VerifyOtp from '../screens/UserOnboardingAndAuth/VerifyOtp';
+import Login from '../screens/UserOnboardingAndAuth/Login';
 import Registration from '../screens/UserOnboardingAndAuth/Registration';
 import AddMember from '../screens/MemberManagement/AddMember';
 import ViewMember from '../screens/MemberManagement/ViewMember';
@@ -15,15 +14,10 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const AuthStack = () => (
-  <Stack.Navigator initialRouteName={RouteNames.EnterPhoneNumber}>
+  <Stack.Navigator initialRouteName={RouteNames.Login}>
     <Stack.Screen
-      name={RouteNames.EnterPhoneNumber}
-      component={EnterPhoneNumber}
-      options={{headerShown: false}}
-    />
-    <Stack.Screen
-      name={RouteNames.VerifyOtp}
-      component={VerifyOtp}
+      name={RouteNames.Login}
+      component={Login}
       options={{headerShown: false}}
     />
     <Stack.Screen
