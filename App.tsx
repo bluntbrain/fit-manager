@@ -6,7 +6,7 @@ import FlashMessage from 'react-native-flash-message';
 import AppStack from './src/navigation/AppStack';
 import colors from './src/theme/colors';
 
-function App(): JSX.Element {
+const App = () => {
   return (
     <NavigationContainer>
       <StatusBar barStyle={'dark-content'} backgroundColor={colors.white} />
@@ -14,6 +14,6 @@ function App(): JSX.Element {
       <FlashMessage position="top" />
     </NavigationContainer>
   );
-}
+};
 
 export default App;

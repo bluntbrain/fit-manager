@@ -5,6 +5,7 @@ import {
   ActivityIndicator,
   StyleSheet,
 } from 'react-native';
+
 import colors from '../../theme/colors';
 
 const styles = StyleSheet.create({
@@ -24,8 +25,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const Button = ({title, onPress, disabled = false}) => {
-  const [is_loading, set_is_loading] = useState(false);
+interface ButtonProps {
+  title: string;
+  onPress?: () => void;
+  disabled?: boolean;
+}
+
+const Button = ({title, onPress, disabled = false}: ButtonProps) => {
+  const [is_loading, set_is_loading] = useState<boolean>(false);
 
   const handlePress = async () => {
     if (disabled) {
@@ -36,8 +43,6 @@ const Button = ({title, onPress, disabled = false}) => {
 
     try {
       await onPress();
-    } catch (error) {
-      console.error("There was an error with button's onPress:", error);
     } finally {
       set_is_loading(false);
     }

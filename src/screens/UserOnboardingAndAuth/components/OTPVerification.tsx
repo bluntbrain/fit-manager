@@ -1,6 +1,7 @@
 import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import React, {useContext} from 'react';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
+
 import {AuthContext} from '../context';
 import Button from '../../../components/common/Button';
 import colors from '../../../theme/colors';
