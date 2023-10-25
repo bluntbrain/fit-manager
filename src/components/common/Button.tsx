@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Button = ({title, onPress, disabled = false}) => {
+const Button = ({title, onPress, disabled = false, custom_styles}) => {
   const [is_loading, set_is_loading] = useState(false);
 
   const handlePress = async () => {
@@ -45,7 +45,11 @@ const Button = ({title, onPress, disabled = false}) => {
 
   return (
     <TouchableOpacity
-      style={[styles.button, disabled ? styles.disabledButton : null]}
+      style={[
+        styles.button,
+        disabled ? styles.disabledButton : null,
+        custom_styles,
+      ]}
       onPress={handlePress}
       activeOpacity={disabled ? 1 : 0.7}>
       {is_loading ? (

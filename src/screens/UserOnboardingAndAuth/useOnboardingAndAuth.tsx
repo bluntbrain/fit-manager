@@ -1,12 +1,18 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import auth from '@react-native-firebase/auth';
+import {useNavigation} from '@react-navigation/native';
 
 import {show_flash_message} from '../../utils/helper';
+import {RouteNames} from '../../navigation/RouteName';
+import {does_user_exist, register_user} from '../../services/onboarding';
 
 export const useOnboardingAndAuth = () => {
   const [phone_number, set_phone_number] = useState('');
   const [confirm, set_confirm] = useState(null);
   const [code, set_code] = useState('');
+  const [show_registration, set_show_registration] = useState(false);
+
+  const navigation = useNavigation();
 
   async function sign_in_with_phone_number() {
     const sanitized_number = phone_number.replace(/[^0-9]/g, '');
@@ -26,12 +32,19 @@ export const useOnboardingAndAuth = () => {
     const confirmation = await auth().signInWithPhoneNumber(valid_phone_number);
     set_confirm(confirmation);
   }
+
   async function confirm_code() {
     try {
       await confirm.confirm(code);
-      console.log('Confirmed!');
+      const user_exist_in_db = (await does_user_exist(phone_number)) || false;
+
+      if (user_exist_in_db) {
+        navigation.navigate(RouteNames.MainApp);
+      } else {
+        set_show_registration(true);
+      }
     } catch (error) {
-      console.log('Invalid code.');
+      show_flash_message('Please enter a valid OTP', '', 'danger', 'danger');
     }
   }
 
@@ -40,9 +53,14 @@ export const useOnboardingAndAuth = () => {
     show_flash_message('OTP sent successfully', '', 'success');
   };
 
+  const on_register_click = data => {
+    register_user(phone_number, data);
+  };
+
   return {
     phone_number,
     set_phone_number,
+    show_registration,
     confirm,
     set_confirm,
     code,
@@ -50,5 +68,6 @@ export const useOnboardingAndAuth = () => {
     sign_in_with_phone_number,
     confirm_code,
     resend_otp,
+    on_register_click,
   };
 };
