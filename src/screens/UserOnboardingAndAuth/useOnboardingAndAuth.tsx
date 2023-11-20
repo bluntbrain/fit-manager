@@ -7,10 +7,10 @@ import {RouteNames} from '../../navigation/RouteName';
 import {does_user_exist, register_user} from '../../services/onboarding';
 
 export const useOnboardingAndAuth = () => {
-  const [phone_number, set_phone_number] = useState('');
-  const [confirm, set_confirm] = useState(null);
-  const [code, set_code] = useState('');
-  const [show_registration, set_show_registration] = useState(false);
+  const [phone_number, set_phone_number] = useState<string>('');
+  const [confirm, set_confirm] = useState<any>(null);
+  const [code, set_code] = useState<string>('');
+  const [show_registration, set_show_registration] = useState<boolean>(false);
 
   const navigation = useNavigation();
 
