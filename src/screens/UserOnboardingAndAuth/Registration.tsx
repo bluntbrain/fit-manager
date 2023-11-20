@@ -39,7 +39,7 @@ const Registration = () => {
     formState: {errors},
   } = useForm();
 
-  const {on_register_click, phone_number} = useContext(AuthContext);
+  const {on_register_click} = useContext(AuthContext);
 
   React.useEffect(() => {
     register('gym_name', {required: true});

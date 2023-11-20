@@ -53,8 +53,9 @@ export const useOnboardingAndAuth = () => {
     show_flash_message('OTP sent successfully', '', 'success');
   };
 
-  const on_register_click = data => {
-    register_user(phone_number, data);
+  const on_register_click = async data => {
+    await register_user(phone_number, data);
+    navigation.navigate(RouteNames.MainApp);
   };
 
   return {
