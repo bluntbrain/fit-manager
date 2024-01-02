@@ -1,6 +1,7 @@
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useContext, useEffect} from 'react';
 import {useForm} from 'react-hook-form';
+import _ from 'lodash';
 
 import Button from '../../components/common/Button';
 import {AuthContext} from './context';
@@ -59,7 +60,7 @@ const Registration = () => {
         onChangeText={text => setValue('gym_name', text)}
         placeholder="Enter Gym Name"
       />
-      {errors.gym_name && (
+      {!_.isEmpty(errors.gym_name) && (
         <Text style={styles.error}>This field is required</Text>
       )}
 
@@ -76,7 +77,7 @@ const Registration = () => {
         onChangeText={text => setValue('owner_name', text)}
         placeholder="Enter Gym Owner Name"
       />
-      {errors.owner_name && (
+      {!_.isEmpty(errors.owner_name) && (
         <Text style={styles.error}>This field is required</Text>
       )}
 
@@ -86,7 +87,9 @@ const Registration = () => {
         onChangeText={text => setValue('email', text)}
         placeholder="Enter Your Email"
       />
-      {errors.email && <Text style={styles.error}>This field is required</Text>}
+      {!_.isEmpty(errors.email) && (
+        <Text style={styles.error}>This field is required</Text>
+      )}
 
       <Text style={styles.input_title}>Gym Location</Text>
       <TextInput
@@ -94,7 +97,7 @@ const Registration = () => {
         onChangeText={text => setValue('gym_location', text)}
         placeholder="Enter Gym Location/ Address"
       />
-      {errors.gym_location && (
+      {!_.isEmpty(errors.gym_location) && (
         <Text style={styles.error}>This field is required</Text>
       )}
 
