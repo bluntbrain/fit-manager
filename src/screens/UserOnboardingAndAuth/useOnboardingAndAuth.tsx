@@ -6,7 +6,7 @@ import {show_flash_message} from '../../utils/helper';
 import {RouteNames} from '../../navigation/RouteName';
 import {does_user_exist, register_user} from '../../services/onboarding';
 
-export const useOnboardingAndAuth = () => {
+const useOnboardingAndAuth = () => {
   const [phone_number, set_phone_number] = useState<string>('');
   const [confirm, set_confirm] = useState<any>(null);
   const [code, set_code] = useState<string>('');
@@ -72,3 +72,5 @@ export const useOnboardingAndAuth = () => {
     on_register_click,
   };
 };
+
+export default useOnboardingAndAuth;
