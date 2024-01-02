@@ -3,7 +3,7 @@ import auth from '@react-native-firebase/auth';
 
 import {show_flash_message} from '../../utils/helper';
 
-export const useOnboardingAndAuth = () => {
+const useOnboardingAndAuth = () => {
   const [phone_number, set_phone_number] = useState<string>('');
   const [confirm, set_confirm] = useState<any>(null);
   const [code, set_code] = useState<string>('');
@@ -26,11 +26,12 @@ export const useOnboardingAndAuth = () => {
     const confirmation = await auth().signInWithPhoneNumber(valid_phone_number);
     set_confirm(confirmation);
   }
-  async function confirm_code() {
+
+  const confirm_code = async () => {
     try {
       await confirm.confirm(code);
     } catch (error) {}
-  }
+  };
 
   const resend_otp = () => {
     sign_in_with_phone_number();
@@ -49,3 +50,5 @@ export const useOnboardingAndAuth = () => {
     resend_otp,
   };
 };
+
+export default useOnboardingAndAuth;

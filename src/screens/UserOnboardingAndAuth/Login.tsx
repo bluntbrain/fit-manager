@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 
-import {useOnboardingAndAuth} from './useOnboardingAndAuth';
+import useOnboardingAndAuth from './useOnboardingAndAuth';
 import PhoneNumberInput from './components/PhoneNumberInput';
 import OTPVerification from './components/OTPVerification';
 import {AuthContext} from './context';
