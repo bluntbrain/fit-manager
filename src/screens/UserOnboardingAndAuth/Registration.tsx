@@ -1,5 +1,5 @@
 import {StyleSheet, Text, TextInput, View} from 'react-native';
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {useForm} from 'react-hook-form';
 
 import Button from '../../components/common/Button';
@@ -41,7 +41,7 @@ const Registration = () => {
 
   const {on_register_click} = useContext(AuthContext);
 
-  React.useEffect(() => {
+  useEffect(() => {
     register('gym_name', {required: true});
     register('license_number');
     register('owner_name', {required: true});

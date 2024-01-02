@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import auth from '@react-native-firebase/auth';
 import {useNavigation} from '@react-navigation/native';
 
@@ -14,7 +14,7 @@ export const useOnboardingAndAuth = () => {
 
   const navigation = useNavigation();
 
-  async function sign_in_with_phone_number() {
+  const sign_in_with_phone_number = async () => {
     const sanitized_number = phone_number.replace(/[^0-9]/g, '');
 
     if (sanitized_number.length !== 10) {
@@ -31,9 +31,9 @@ export const useOnboardingAndAuth = () => {
 
     const confirmation = await auth().signInWithPhoneNumber(valid_phone_number);
     set_confirm(confirmation);
-  }
+  };
 
-  async function confirm_code() {
+  const confirm_code = async () => {
     try {
       await confirm.confirm(code);
       const user_exist_in_db = (await does_user_exist(phone_number)) || false;
@@ -46,7 +46,7 @@ export const useOnboardingAndAuth = () => {
     } catch (error) {
       show_flash_message('Please enter a valid OTP', '', 'danger', 'danger');
     }
-  }
+  };
 
   const resend_otp = () => {
     sign_in_with_phone_number();
