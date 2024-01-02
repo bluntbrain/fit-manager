@@ -4,12 +4,17 @@ import useOnboardingAndAuth from './useOnboardingAndAuth';
 import PhoneNumberInput from './components/PhoneNumberInput';
 import OTPVerification from './components/OTPVerification';
 import {AuthContext} from './context';
+import Registration from './Registration';
 
 const LoginComponent = () => {
-  const {confirm} = useContext(AuthContext);
+  const {confirm, show_registration} = useContext(AuthContext);
 
   if (!confirm) {
     return <PhoneNumberInput />;
+  }
+
+  if (show_registration) {
+    return <Registration />;
   }
 
   return <OTPVerification />;

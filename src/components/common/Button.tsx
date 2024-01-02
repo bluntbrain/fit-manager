@@ -29,9 +29,15 @@ interface ButtonProps {
   title: string;
   onPress?: () => void;
   disabled?: boolean;
+  custom_styles?: any;
 }
 
-const Button = ({title, onPress, disabled = false}: ButtonProps) => {
+const Button = ({
+  title,
+  onPress,
+  disabled = false,
+  custom_styles,
+}: ButtonProps) => {
   const [is_loading, set_is_loading] = useState<boolean>(false);
 
   const handlePress = async () => {
@@ -50,7 +56,11 @@ const Button = ({title, onPress, disabled = false}: ButtonProps) => {
 
   return (
     <TouchableOpacity
-      style={[styles.button, disabled ? styles.disabledButton : null]}
+      style={[
+        styles.button,
+        disabled ? styles.disabledButton : null,
+        custom_styles,
+      ]}
       onPress={handlePress}
       activeOpacity={disabled ? 1 : 0.7}>
       {is_loading ? (

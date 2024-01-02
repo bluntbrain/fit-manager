@@ -2,7 +2,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Login from '../screens/UserOnboardingAndAuth/Login';
-import Registration from '../screens/UserOnboardingAndAuth/Registration';
 import AddMember from '../screens/MemberManagement/AddMember';
 import ViewMember from '../screens/MemberManagement/ViewMember';
 import MemberList from '../screens/MemberManagement/MemberList';
@@ -18,11 +17,6 @@ const AuthStack = () => (
     <Stack.Screen
       name={RouteNames.Login}
       component={Login}
-      options={{headerShown: false}}
-    />
-    <Stack.Screen
-      name={RouteNames.Registration}
-      component={Registration}
       options={{headerShown: false}}
     />
   </Stack.Navigator>
