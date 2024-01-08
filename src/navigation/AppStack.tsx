@@ -1,5 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import Login from '../screens/UserOnboardingAndAuth/Login';
 import AddMember from '../screens/MemberManagement/AddMember';
@@ -8,6 +9,7 @@ import MemberList from '../screens/MemberManagement/MemberList';
 import Dashboard from '../screens/Dashboard/Dashboard';
 import ViewProfile from '../screens/UserSettingsAndProfile/ViewProfile';
 import {RouteNames} from './RouteName';
+import colors from '../theme/colors';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -53,7 +55,23 @@ const UserProfileStack = () => (
 );
 
 const BottomTabNav = () => (
-  <Tab.Navigator>
+  <Tab.Navigator
+    screenOptions={({route}) => ({
+      tabBarIcon: ({focused, color, size}) => {
+        let iconName;
+
+        if (route.name === RouteNames.Dashboard) {
+          iconName = focused ? 'home' : 'home-outline';
+        } else if (route.name === RouteNames.Members) {
+          iconName = focused ? 'people' : 'people-outline';
+        } else if (route.name === RouteNames.Profile) {
+          iconName = focused ? 'person' : 'person-outline';
+        }
+        return <Icon name={iconName} size={size} color={color} />;
+      },
+      tabBarActiveTintColor: colors.primary,
+      tabBarInactiveTintColor: colors.gray,
+    })}>
     <Tab.Screen
       name={RouteNames.Dashboard}
       component={Dashboard}
