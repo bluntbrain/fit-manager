@@ -49,16 +49,14 @@ export const does_user_exist = async phone_number => {
     .equalTo(phone_number)
     .once('value');
   if (snapshot.exists()) {
-    getGymIdByOwnerPhoneNumber(phone_number).then(res => {
+    get_gym_id_by_owner_phone(phone_number).then(res => {
       save_gym_id(res);
     });
   }
   return snapshot.exists();
 };
 
-export const getGymIdByOwnerPhoneNumber = async (
-  owner_phone_number: number,
-) => {
+export const get_gym_id_by_owner_phone = async (owner_phone_number: number) => {
   const gymsRef = firebase.app().database(DATABASE_URL).ref('gyms');
   try {
     const snapshot = await gymsRef

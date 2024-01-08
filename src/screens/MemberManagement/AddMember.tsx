@@ -19,16 +19,14 @@ const AddMemberScreen = () => {
   } = useForm();
 
   const on_submit = async data => {
-    console.log('on_submit', data);
     const gym_id = await get_gym_id();
-    register_member(gym_id, data.phone_number, data).then(res => {
-      console.log('final register_member', res);
-    });
+    register_member(gym_id, data.phone_number, data);
   };
 
   return (
     <SafeAreaView style={{flex: 1}}>
       <CustomAppBar title={'Add Member'} />
+
       <View style={styles.container}>
         <Controller
           control={control}
@@ -48,9 +46,11 @@ const AddMemberScreen = () => {
           )}
           name="full_name"
         />
+
         {!_.isEmpty(errors.full_name) && (
           <Text style={styles.error}>This is required.</Text>
         )}
+
         <Controller
           control={control}
           rules={{
@@ -70,6 +70,7 @@ const AddMemberScreen = () => {
           )}
           name="phone_number"
         />
+
         {!_.isEmpty(errors.phone_number) && (
           <Text style={styles.error}>This is required.</Text>
         )}
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: colors.gray,
     paddingHorizontal: 10,
     width: '100%',
     borderRadius: 8,
@@ -164,7 +165,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   error: {
-    color: 'red',
+    color: colors.danger,
     marginTop: 2,
   },
 });
