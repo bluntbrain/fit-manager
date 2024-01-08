@@ -1,6 +1,6 @@
 import {firebase} from '@react-native-firebase/database';
 
-import {show_flash_message} from '../utils/helper';
+import {save_gym_id, show_flash_message} from '../utils/helper';
 import {DATABASE_URL, ROLE_TYPE} from '../utils/constants';
 
 export const register_user = (phone_number, form_data) => {
@@ -48,5 +48,29 @@ export const does_user_exist = async phone_number => {
     .orderByChild('phone')
     .equalTo(phone_number)
     .once('value');
+  if (snapshot.exists()) {
+    get_gym_id_by_owner_phone(phone_number).then(res => {
+      save_gym_id(res);
+    });
+  }
   return snapshot.exists();
+};
+
+export const get_gym_id_by_owner_phone = async (owner_phone_number: number) => {
+  const gymsRef = firebase.app().database(DATABASE_URL).ref('gyms');
+  try {
+    const snapshot = await gymsRef
+      .orderByChild('owner_phone_number')
+      .equalTo(owner_phone_number)
+      .once('value');
+    if (snapshot.exists()) {
+      const gyms = snapshot.val();
+      const gymIds = Object.keys(gyms);
+      return gymIds.length > 0 ? gymIds[0] : null;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    return null;
+  }
 };
