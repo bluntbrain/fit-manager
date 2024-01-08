@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Text, TextInput} from 'react-native';
+
 import colors from '../../theme/colors';
 
 const CustomTextInput = ({
